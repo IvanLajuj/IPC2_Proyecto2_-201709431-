@@ -1,0 +1,20 @@
+{% extends "base.html" %} {% block title %}Cargar archivo{% endblock %} {% block
+content %}
+<h2>Cargar archivo XML de entrada</h2>
+<form
+  action="{{ url_for('cargar') }}"
+  method="post"
+  enctype="multipart/form-data"
+>
+  <input type="file" name="archivo" accept=".xml" required />
+  <button class="btn" type="submit">Cargar</button>
+</form>
+
+{% if xml_cargado %}
+<p class="ok">
+  Ya hay un archivo cargado.
+  <a class="btn" href="{{ url_for('invernaderos') }}">Continuar</a>
+</p>
+{% else %}
+<p class="warn">Aún no has cargado un archivo.</p>
+{% endif %} {% endblock %}
